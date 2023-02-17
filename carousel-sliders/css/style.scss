@@ -127,3 +127,22 @@ body {
 
 // THIRD CAROUSEL: AUTO AND CLICK
 
+.carousel3 {
+    height: 220px;
+    width: 400px;
+    display:inline-flex; // importat: if you don't set this, images might not be centered
+    box-shadow: rgba(255, 255, 255, 0.3) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;;
+    overflow: hidden;
+}
+
+.slide-carousel3 {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    transform: translateX(0);
+}
+
+.img-crousel3 {
+    height: 220px;
+    width: 400px;
+    object-fit: cover;
+}
