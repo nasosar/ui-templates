@@ -62,9 +62,11 @@ const img3 = document.querySelectorAll("#slide3 img");
 const buttons = document.querySelectorAll('.btn3');
 
 let idy = 0;
-let idyClick = 0;
+let idyClickLeft = 0;
+let idyClickRight = 0;
+let myinterval = null;
 
-function carousel3() {
+function carousel3() { // this function works exaclty like the on in the first example
     idy++;
 
     if (idy > img3.length - 1) {
@@ -74,35 +76,56 @@ function carousel3() {
     slideCarousel3.style.transform = ` translateX(${- idy * 400}px) `;
 }
 
-myinterval = setInterval(carousel3, 2000);
+function intervalTriggerl() {
+    myinterval = setInterval(carousel3, 2000);
+    console.log('interval start');
+}
 
+intervalTriggerl();
 
 function clickCarousel() {
-    clearInterval(myinterval);
-    idy++;
-
-    if (idy > img3.length - 1) {
+    console.log("img lenght " +img3.length + ', idy = ' +idy + ', idyLeft = ' +idyClickLeft + ', idyRight = ' +idyClickRight);
+    if (idyClickRight > img3.length) {
         idy = 0;
     }
 
-    slideCarousel3.style.transform = ` translateX(${- idy * 400}px) `;
-    myinterval = setInterval(carousel3, 2000)    
+    if (idy < 0) {
+        idy = img3.length;
+    }
+
+    if (leftBtn = true) {
+
+    
+        if ( Math.abs(idy) < img3.length -1) {
+            slideCarousel3.style.transform = ` translateX(${- idy * 400}px) `;
+        }
+    
+    } else {
+        if (idyClickRight >  img3.length -1) {
+            slideCarousel3.style.transform = ` translateX(${idy * 400}px) `;
+        }
+    
+    }
+
+    
+    //setTimeout(intervalTriggerl, 5000);
+    //myinterval = setInterval(carousel3, 2000);    
 }
 
 
 buttons.forEach (button => {
     button.addEventListener( 'click', () => {
+        idy = Math.abs(idy);
 
         const leftBtn = button.classList.contains('btnleft');
         if (leftBtn) {
-            idyClick = idy--;
-            console.log(idyClick)
+            idyClickLeft = idy-- -2;
         } else {
-            idyClick = idy++;
-            console.log(idyClick)
+            idyClickRight = idy++ +2;
         }
         
-        clickCarousel(idyClick);
+        clearInterval(myinterval);
+        clickCarousel();
     })
 })
 
