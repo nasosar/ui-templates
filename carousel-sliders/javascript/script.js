@@ -85,23 +85,21 @@ intervalTriggerl();
 
 function clickCarousel() {
     console.log("img lenght " +img3.length + ', idy = ' +idy + ', idyLeft = ' +idyClickLeft + ', idyRight = ' +idyClickRight);
-    if (idyClickRight > img3.length) {
+    if (idy > img3.length -1) {
         idy = 0;
     }
 
-    if (idy < 0) {
-        idy = img3.length;
+    if (idy <= 0) {
+        idy = img3.length - 1;
     }
 
     if (leftBtn = true) {
+        slideCarousel3.style.transform = ` translateX(${- idy * 400}px) `;
+        
+    } else /*if right is true */{
 
-    
-        if ( Math.abs(idy) < img3.length -1) {
-            slideCarousel3.style.transform = ` translateX(${- idy * 400}px) `;
-        }
-    
-    } else {
-        if (idyClickRight >  img3.length -1) {
+       
+        if (idyClickRight >  img3.length) {
             slideCarousel3.style.transform = ` translateX(${idy * 400}px) `;
         }
     
@@ -109,7 +107,7 @@ function clickCarousel() {
 
     
     //setTimeout(intervalTriggerl, 5000);
-    //myinterval = setInterval(carousel3, 2000);    
+  
 }
 
 
