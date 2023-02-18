@@ -54,3 +54,55 @@ controls.forEach(control => {
         console.log ('control', isLeft, currentItem);
     });
 });
+
+//THIRD CAROUSEL: AUTO AND CLICK SLIDE 
+
+const slideCarousel3 = document.getElementById("slide3");
+const img3 = document.querySelectorAll("#slide3 img");
+const buttons = document.querySelectorAll('.btn3');
+
+let idy = 0;
+let idyClick = 0;
+
+function carousel3() {
+    idy++;
+
+    if (idy > img3.length - 1) {
+        idy = 0;
+    }
+
+    slideCarousel3.style.transform = ` translateX(${- idy * 400}px) `;
+}
+
+myinterval = setInterval(carousel3, 2000);
+
+
+function clickCarousel() {
+    clearInterval(myinterval);
+    idy++;
+
+    if (idy > img3.length - 1) {
+        idy = 0;
+    }
+
+    slideCarousel3.style.transform = ` translateX(${- idy * 400}px) `;
+    myinterval = setInterval(carousel3, 2000)    
+}
+
+
+buttons.forEach (button => {
+    button.addEventListener( 'click', () => {
+
+        const leftBtn = button.classList.contains('btnleft');
+        if (leftBtn) {
+            idyClick = idy--;
+            console.log(idyClick)
+        } else {
+            idyClick = idy++;
+            console.log(idyClick)
+        }
+        
+        clickCarousel(idyClick);
+    })
+})
+

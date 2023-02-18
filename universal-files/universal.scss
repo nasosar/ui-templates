@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,500;1,600;1,700;1,800&display=swap');
+
+$lightMainColor: rgb(253, 228, 235);
+$highlightColor: rgba(255, 153, 182, 1);
+$transparentDarkBG: rgba(0, 0, 0, 0.2);
+$transparentHoverBG: rgba(0, 0, 0, 0.7);
+$mainTextShadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+$mainBoxShadow: rgba(255, 255, 255, 0.3) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: 'Open Sans', sans-serif;
+    background: linear-gradient(325deg, rgba(44,4,80,1) 0%, rgba(125,2,57,1) 50%, rgba(180,74,0,1) 100%);
+}
+
+footer {
+    height: 10vh;
+    background-color: $transparentDarkBG;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $lightMainColor;
+}
+.footerlink {
+    color: inherit;
+}
+.footerlink:hover {
+    color: $highlightColor;
+}

@@ -1,0 +1,30 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,500;1,600;1,700;1,800&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  font-family: "Open Sans", sans-serif;
+  background: linear-gradient(325deg, rgb(44, 4, 80) 0%, rgb(125, 2, 57) 50%, rgb(180, 74, 0) 100%);
+}
+
+footer {
+  height: 10vh;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(253, 228, 235);
+}
+
+.footerlink {
+  color: inherit;
+}
+
+.footerlink:hover {
+  color: rgb(255, 153, 182);
+}/*# sourceMappingURL=universal.css.map */
