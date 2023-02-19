@@ -55,19 +55,20 @@ controls.forEach(control => {
     });
 });
 
+
 //THIRD CAROUSEL: AUTO AND CLICK SLIDE 
 
 const slideCarousel3 = document.getElementById("slide3");
 const img3 = document.querySelectorAll("#slide3 img");
 const buttons = document.querySelectorAll('.btn3');
 
-let idy = 0;
-let idyClickLeft = 0;
-let idyClickRight = 0;
-let myinterval = null;
-let idyInterval = 0;
+let idy = 0; // counter for automatic carousel
+let idyClickLeft = 0; // counter for left click
+let idyClickRight = 0; // conunter for right click
+let idyInterval = 0; // counter for restart intervalTrigger
+let myinterval = null; // will become the function to setIntervall
 
-function carousel3() { // Automatic carousel run: this function works exaclty like the on in the first example
+function autoCarousel3() { // Automatic carousel run: this function works exaclty like the on in the first example
     idy++;
 
     if (idy > img3.length - 1) {
@@ -77,44 +78,21 @@ function carousel3() { // Automatic carousel run: this function works exaclty li
     slideCarousel3.style.transform = ` translateX(${- idy * 400}px) `;
 }
 
-function intervalTriggerl() {
+
+function intervalTriggerl() { // Triggers the automatic carousel slider, will do it on load and when the click function calls it
     idyInterval = 0;
-    myinterval = setInterval(carousel3, 2000);
-    console.log('idyinterval is ' + idyInterval + ', interval start');
-}
-
-intervalTriggerl();
-
-function clickCarousel() {
-   //console.log("img lenght " +img3.length + ', idy = ' +idy + ', idyLeft = ' +idyClickLeft + ', idyRight = ' +idyClickRight);
-    if (idy > img3.length - 1) {
-        idy = 0;
-    }
-
-    if (idy < 0) {
-        idy = img3.length - 1;
-    }
-
-    if (leftBtn = true) { // left direction works okay
-        slideCarousel3.style.transform = ` translateX(${- idy * 400}px) `;
-        
-    } else { /*if right is true */     
-            slideCarousel3.style.transform = ` translateX(${idy * 400}px) `;
-    
-    }
-
-  
+    myinterval = setInterval(autoCarousel3, 2000);
 }
 
 
 buttons.forEach (button => {
     button.addEventListener( 'click', () => {
-        idy = Math.abs(idy);
+        idy = Math.abs(idy); // makes the counter idy value always postive
 
-        const leftBtn = button.classList.contains('btnleft');
+        const leftBtn = button.classList.contains('btnleft'); // identifies if left button was clicked 
 
-        clearInterval(myinterval);
-        idyInterval = ++idyInterval;
+        clearInterval(myinterval); // stops auto slide so it doesn't overlap with the intentional scrolling of pictures
+        idyInterval = ++idyInterval; // increments interval counter so it can't be triggered more than once later
         
         if (leftBtn) {
             idyClickLeft = idy-- -2;
@@ -122,11 +100,30 @@ buttons.forEach (button => {
             idyClickRight = idy++ +2;
         }
         
-        clickCarousel();
+        clickCarousel(); // triggers click function to define if next or previouse picture will be scrolled
 
         if (idyInterval <= 1) { // this variable limit prevents the intervaled to be triggered more than once & and mess up the rythm of the slide
             setTimeout(intervalTriggerl, 5000);
         }
+
     })
 })
 
+
+function clickCarousel() {
+   
+    if (idy > img3.length - 1) { // if you get to the last picture, it will reset the counter so it goes back to first picture
+        idy = 0;
+    } else if (idy < 0) { // if you get to the first picture, it will max the counter so you go to the last picture
+        idy = img3.length - 1;
+    }
+
+
+    if (leftBtn = true) { // if left button is clicked, next image
+        slideCarousel3.style.transform = ` translateX(${- idy * 400}px) `;
+        
+    } else { // if left button is clicked, previous image
+            slideCarousel3.style.transform = ` translateX(${idy * 400}px) `;
+    
+    }  
+}
