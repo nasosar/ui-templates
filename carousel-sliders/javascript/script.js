@@ -65,8 +65,9 @@ let idy = 0;
 let idyClickLeft = 0;
 let idyClickRight = 0;
 let myinterval = null;
+let idyInterval = 0;
 
-function carousel3() { // this function works exaclty like the on in the first example
+function carousel3() { // Automatic carousel run: this function works exaclty like the on in the first example
     idy++;
 
     if (idy > img3.length - 1) {
@@ -77,36 +78,31 @@ function carousel3() { // this function works exaclty like the on in the first e
 }
 
 function intervalTriggerl() {
+    idyInterval = 0;
     myinterval = setInterval(carousel3, 2000);
-    console.log('interval start');
+    console.log('idyinterval is ' + idyInterval + ', interval start');
 }
 
 intervalTriggerl();
 
 function clickCarousel() {
-    console.log("img lenght " +img3.length + ', idy = ' +idy + ', idyLeft = ' +idyClickLeft + ', idyRight = ' +idyClickRight);
-    if (idy > img3.length -1) {
+   //console.log("img lenght " +img3.length + ', idy = ' +idy + ', idyLeft = ' +idyClickLeft + ', idyRight = ' +idyClickRight);
+    if (idy > img3.length - 1) {
         idy = 0;
     }
 
-    if (idy <= 0) {
+    if (idy < 0) {
         idy = img3.length - 1;
     }
 
-    if (leftBtn = true) {
+    if (leftBtn = true) { // left direction works okay
         slideCarousel3.style.transform = ` translateX(${- idy * 400}px) `;
         
-    } else /*if right is true */{
-
-       
-        if (idyClickRight >  img3.length) {
+    } else { /*if right is true */     
             slideCarousel3.style.transform = ` translateX(${idy * 400}px) `;
-        }
     
     }
 
-    
-    //setTimeout(intervalTriggerl, 5000);
   
 }
 
@@ -116,14 +112,21 @@ buttons.forEach (button => {
         idy = Math.abs(idy);
 
         const leftBtn = button.classList.contains('btnleft');
+
+        clearInterval(myinterval);
+        idyInterval = ++idyInterval;
+        
         if (leftBtn) {
             idyClickLeft = idy-- -2;
         } else {
             idyClickRight = idy++ +2;
         }
         
-        clearInterval(myinterval);
         clickCarousel();
+
+        if (idyInterval <= 1) { // this variable limit prevents the intervaled to be triggered more than once & and mess up the rythm of the slide
+            setTimeout(intervalTriggerl, 5000);
+        }
     })
 })
 
