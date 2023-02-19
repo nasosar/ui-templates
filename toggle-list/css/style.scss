@@ -1,0 +1,58 @@
+@import '../../universal-files/universal';
+
+
+h1 {
+    color: $highlightColor;
+    text-shadow: $mainTextShadow;
+    font-size: 18px;
+}
+.section1 {
+    padding-top: 40px;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    gap: 5vh;
+}
+
+
+.listcontainer {
+    max-width: 600px;
+    width: 80%;
+    font-size: 16px;
+    color: $lightMainColor;
+}
+
+.listcontainer>* {
+    padding: 10px 20px;
+    background-color: $transparentDarkBG;
+}
+
+.titlelist {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 700;
+    border-bottom: 2px solid $lightMainColor;
+}
+
+.titlelist:hover,
+.titlelist-active{
+    background-color: $transparentHoverBG;
+    color: $highlightColor;
+    border-bottom: 2px solid $highlightColor;
+    cursor: pointer;
+}
+
+.arrow {
+    font-size: 24px;
+}
+
+.ocultitem {
+    display: none;
+}
+
+.activeitem {
+    display: block;
+}
