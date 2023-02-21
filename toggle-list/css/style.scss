@@ -6,6 +6,7 @@ h1 {
     text-shadow: $mainTextShadow;
     font-size: 18px;
 }
+
 .section1 {
     padding-top: 40px;
     height: 90vh;
@@ -16,43 +17,74 @@ h1 {
     gap: 5vh;
 }
 
-
-.listcontainer {
+.listcontainer { // lists with many groups of questions + answers
     max-width: 600px;
     width: 80%;
     font-size: 16px;
     color: $lightMainColor;
 }
 
-.listcontainer>* {
-    padding: 10px 20px;
+
+.faq-item { // group with question and answer
+    width: 100%;
+    border-bottom: 2px solid $lightMainColor;
+}
+
+.faq-item > * { // this item's chlidren will have these properties
+    padding: 0 20px;
     background-color: $transparentDarkBG;
 }
 
-.titlelist {
+.faq-item:hover {
+    border-bottom: 2px solid $highlightColor;
+    background-color: $transparentHoverBG;
+    color: $highlightColor;
+}
+
+.titlelist { // tittle + arrow
+    height: 7vh;
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-weight: 700;
-    border-bottom: 2px solid $lightMainColor;
 }
 
-.titlelist:hover,
-.titlelist-active{
-    background-color: $transparentHoverBG;
-    color: $highlightColor;
-    border-bottom: 2px solid $highlightColor;
+.titlelist:hover {
     cursor: pointer;
 }
 
 .arrow {
     font-size: 24px;
+    transition: transform .2s ease;
 }
 
-.ocultitem {
-    display: none;
+ol {
+    margin-left: 20px;
 }
 
-.activeitem {
-    display: block;
+.toggleitem { // toggle items are the answers, that will be hidden until the fuction is triggered with a click
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .5s ease;
+}
+
+.toggleitem>p { // text within the answer div
+    padding: 10px 0;
+    line-height: 1.5em;
+}
+
+.faq-item.active .toggleitem { // when faq-item gains the active class, something happens to toggleitem
+    max-height: 300px;
+}
+
+.faq-item.active .titlelist { // when faq-item gains the active class, something happens to title list
+    color: $highlightColor;
+}
+
+.faq-item.active {  // when faq-item gains the active class, something happens to it
+    border-bottom: 2px solid $highlightColor;
+}
+
+.faq-item.active .arrow { // when faq-item gains the active class, something happens to the arrow
+    transform: rotate(180deg);
 }

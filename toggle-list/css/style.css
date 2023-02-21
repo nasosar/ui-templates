@@ -52,35 +52,66 @@ h1 {
   color: rgb(253, 228, 235);
 }
 
-.listcontainer > * {
-  padding: 10px 20px;
+.faq-item {
+  width: 100%;
+  border-bottom: 2px solid rgb(253, 228, 235);
+}
+
+.faq-item > * {
+  padding: 0 20px;
   background-color: rgba(0, 0, 0, 0.2);
 }
 
+.faq-item:hover {
+  border-bottom: 2px solid rgb(255, 153, 182);
+  background-color: rgba(0, 0, 0, 0.7);
+  color: rgb(255, 153, 182);
+}
+
 .titlelist {
+  height: 7vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-weight: 700;
-  border-bottom: 2px solid rgb(253, 228, 235);
 }
 
-.titlelist:hover,
-.titlelist-active {
-  background-color: rgba(0, 0, 0, 0.7);
-  color: rgb(255, 153, 182);
-  border-bottom: 2px solid rgb(255, 153, 182);
+.titlelist:hover {
   cursor: pointer;
 }
 
 .arrow {
   font-size: 24px;
+  transition: transform 0.2s ease;
 }
 
-.ocultitem {
-  display: none;
+ol {
+  margin-left: 20px;
 }
 
-.activeitem {
-  display: block;
+.toggleitem {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+}
+
+.toggleitem > p {
+  padding: 10px 0;
+  line-height: 1.5em;
+}
+
+.faq-item.active .toggleitem {
+  max-height: 300px;
+}
+
+.faq-item.active .titlelist {
+  color: rgb(255, 153, 182);
+}
+
+.faq-item.active {
+  border-bottom: 2px solid rgb(255, 153, 182);
+}
+
+.faq-item.active .arrow {
+  transform: rotate(180deg);
 }/*# sourceMappingURL=style.css.map */
