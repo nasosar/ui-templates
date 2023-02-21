@@ -57,7 +57,7 @@ controls.forEach(control => {
 
 
 //THIRD CAROUSEL: AUTO AND CLICK SLIDE 
-
+const carouselBox = document.querySelector('.carousel3'); // this will allow to make a more dinamic carousel, getting the width if the carousel has relative units
 const slideCarousel3 = document.getElementById("slide3");
 const img3 = document.querySelectorAll("#slide3 img");
 const buttons = document.querySelectorAll('.btn3');
@@ -75,7 +75,7 @@ function autoCarousel3() { // Automatic carousel run: this function works exaclt
         idy = 0;
     }
 
-    slideCarousel3.style.transform = ` translateX(${- idy * 400}px) `;
+    slideCarousel3.style.transform = ` translateX(${- idy * carouselBox.offsetWidth}px) `;
 }
 
 
@@ -87,8 +87,8 @@ function intervalTriggerl() { // Triggers the automatic carousel slider, will do
 
 buttons.forEach (button => {
     button.addEventListener( 'click', () => {
-        idy = Math.abs(idy); // makes the counter idy value always postive
 
+        idy = Math.abs(idy); // makes the counter idy value always postive
         const leftBtn = button.classList.contains('btnleft'); // identifies if left button was clicked 
 
         clearInterval(myinterval); // stops auto slide so it doesn't overlap with the intentional scrolling of pictures
@@ -120,10 +120,10 @@ function clickCarousel() {
 
 
     if (leftBtn = true) { // if left button is clicked, next image
-        slideCarousel3.style.transform = ` translateX(${- idy * 400}px) `;
+        slideCarousel3.style.transform = ` translateX(${- idy * carouselBox.offsetWidth}px) `;
         
     } else { // if left button is clicked, previous image
-            slideCarousel3.style.transform = ` translateX(${idy * 400}px) `;
+            slideCarousel3.style.transform = ` translateX(${idy * carouselBox.offsetWidth}px) `;
     
     }  
 }
