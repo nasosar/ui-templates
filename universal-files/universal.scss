@@ -28,9 +28,11 @@ footer {
     align-items: center;
     color: $lightMainColor;
 }
+
 .footerlink {
-    color: inherit;
+    color: $lightMainColor;
 }
+
 .footerlink:hover {
     color: $highlightColor;
 }
