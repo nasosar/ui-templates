@@ -1,0 +1,134 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,500;1,600;1,700;1,800&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  font-family: "Open Sans", sans-serif;
+  background: linear-gradient(325deg, rgb(44, 4, 80) 0%, rgb(125, 2, 57) 50%, rgb(180, 74, 0) 100%);
+}
+
+footer {
+  height: 10vh;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(253, 228, 235);
+}
+
+.footerlink {
+  color: rgb(253, 228, 235);
+}
+
+.footerlink:hover {
+  color: rgb(255, 153, 182);
+}
+
+h1 {
+  color: rgb(255, 153, 182);
+  text-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  font-size: 18px;
+}
+
+.section1 {
+  padding-top: 40px;
+  height: 200vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  gap: 5vh;
+}
+
+.listbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  margin: auto;
+}
+
+.listcontainer {
+  max-width: 200px;
+  font-size: 16px;
+  color: rgb(253, 228, 235);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.counter {
+  font-size: 50px;
+  font-weight: 800;
+}
+
+.faq-item {
+  width: 100%;
+  border-bottom: 2px solid rgb(253, 228, 235);
+}
+
+.faq-item > * {
+  padding: 0 20px;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.faq-item:hover {
+  border-bottom: 2px solid rgb(255, 153, 182);
+  background-color: rgba(0, 0, 0, 0.7);
+  color: rgb(255, 153, 182);
+}
+
+.titlelist {
+  height: 7vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 700;
+}
+
+.titlelist:hover {
+  cursor: pointer;
+}
+
+.arrow {
+  font-size: 24px;
+  transition: transform 0.2s ease;
+}
+
+ol {
+  margin-left: 20px;
+}
+
+.toggleitem {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+}
+
+.toggleitem > p {
+  padding: 10px 0;
+  line-height: 1.5em;
+}
+
+.faq-item.active .toggleitem {
+  max-height: 300px;
+}
+
+.faq-item.active .titlelist {
+  color: rgb(255, 153, 182);
+}
+
+.faq-item.active {
+  border-bottom: 2px solid rgb(255, 153, 182);
+}
+
+.faq-item.active .arrow {
+  transform: rotate(180deg);
+}/*# sourceMappingURL=style.css.map */
