@@ -1,5 +1,5 @@
 let counters = document.querySelectorAll('.counter');
-let countInterval = 4000;
+let countInterval = 5000;
 let counterBox = document.querySelector('.listbox')
 
 
@@ -24,32 +24,26 @@ function isInViewport(counterBox) {
 window.addEventListener('scroll', function () {
     if (isInViewport(counterBox)) {
         counters.forEach(counter => {
+            
             let startValue = 0;
             let endValue = parseInt(counter.getAttribute('data-val'));
             let duration = Math.floor(countInterval / endValue);
+
+            switch(true) {
+                case (counter.innerHTML == endValue):
+                break;
+                case (counter.innerHTML == 0):                    
+                    let triggerCount = setInterval (function () {
+                        startValue += 1;
+                        counter.textContent = startValue;
+                        if (startValue == endValue) {
+                            clearInterval(triggerCount);
+                        }
+                    }, duration);    
+                break;                 
+            }
         
-            let triggerCount = setInterval (function () {
-                startValue += 1;
-                counter.textContent = startValue;
-                if (startValue == endValue) {
-                    clearInterval(triggerCount);
-                }
-            }, duration);
         });
-    }
-}, {once : true});
+    } 
+}, false);
 
-
-// counters.forEach(counter => {
-//     let startValue = 0;
-//     let endValue = parseInt(counter.getAttribute('data-val'));
-//     let duration = Math.floor(countInterval / endValue);
-
-//     let triggerCount = setInterval (function () {
-//         startValue += 1;
-//         counter.textContent = startValue;
-//         if (startValue == endValue) {
-//             clearInterval(triggerCount);
-//         }
-//     }, duration);
-// });
